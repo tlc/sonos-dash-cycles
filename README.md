@@ -55,7 +55,7 @@ See the [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api)
 documentation for what types of cycle actions you can send.
 
 Note the action with two strings in the configuration above.
-Generally, sending a favorite/\* URL will cause it play.  But there
+Generally, sending a favorite/\* URL will cause Sonos to play it.  But there
 is a [scenario](https://github.com/jishi/node-sonos-http-api/issues/159)
 where Pandora stations don't immediately play.  Hence the two actions
 in my example.
@@ -65,16 +65,15 @@ You could configure it to send URLs to anything.**
 
 ## Execution
 
+Cycles expects a local config.json file.  If it's not there, or doesn't parse well, Cycles will still do MAC discovery.  
 Because Cycles sniffs network arp packets, it requires root permissions to run.
 
     sudo python cycles.py
 
-Cycles will also log any unknown MACs, for discovery.
-
 If you prefer you can run the docker version.  The packet sniffing requires
 `--net=host`
 
-    docker run -d --restart=always --name=cycles --net=host -v $PWD/myconfig.json:/cycles/config.json troyc/cycles
+    docker run -d --restart=always --name=cycles --net=host -v $PWD/myconfig.json:/cycles/config.json troyc/sonos-dash-cycles
 
 
 
