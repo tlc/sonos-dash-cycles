@@ -1,7 +1,7 @@
 
 # SONOS DASH CYCLES
 
-Cycles is a simple little program that listens for Amazon Dash buttons
+Cycles is a simple, little program that listens for Amazon Dash buttons
 and sends commands to your Sonos.
 
 The Dash button use was inspired by a
@@ -75,6 +75,6 @@ If you prefer you can run the docker version.  The packet sniffing requires
 `--net=host`
 
     docker run -d --restart=always --name=cycles --net=host -v $PWD/myconfig.json:/cycles/config.json troyc/cycles
-or
+
 
 
