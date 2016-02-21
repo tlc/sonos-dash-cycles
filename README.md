@@ -14,6 +14,8 @@ Since the Dash button is a single action button, Cycles will cycle through
 a series of preconfigured actions -- favorites, volume levels, etc.
 It can be configured for multiple Dash buttons acting on 1 or more Sonos.
 
+*Note that Dash buttons take several seconds to wake up and do their thing.*
+
 ## Requirements
 Install and configure [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api) server.  Test it with your browser.
 
@@ -61,7 +63,7 @@ where Pandora stations don't immediately play.  Hence the two actions
 in my example.
 
 **By the way, cycles doesn't actually contain any Sonos specific behavior.
-You could configure it to send URLs to anything.**
+You could configure it to HTTP GET URLs for anything.**
 
 ## Execution
 
