@@ -15,7 +15,8 @@ def handle_click(button):
     button['index'] = index
 
     for url in cycle[index]:
-        url = button.get('zone_url') + url
+        # node-sonos-http-api doesn't like extra /
+        url = button.get('zone_url').rstrip('/') + '/' + url.lstrip('/')
         try:
             log.debug('sending %s', url)
             r = requests.get(url)
@@ -27,19 +28,24 @@ def handle_click(button):
 
 
 def handle_arp(pkt):
+    if not ARP in pkt:
+        return
     if pkt[ARP].op == 1:    # who-has (request)
         if pkt[ARP].psrc == '0.0.0.0':  # ARP Probe
             button = buttons.get(pkt[ARP].hwsrc)
             if button:
-                log.info('Pushed %s', button.get('zone'))
+                log.info('Pushed %s', button.get('name'))
                 handle_click(button)
             else:
                 log.info('ARP Probe from unknown device: %s', pkt[ARP].hwsrc)
 
 
 buttons = {}
-with open('config.json') as f:
-    buttons = json.load(f)
+try:
+    with open('config.json') as f:
+        buttons = json.load(f)
+except:
+    log.info("Error reading config, still discovering.")
 
 # json.dump(buttons, sys.stdout, indent=4, default=lambda obj: None)
 
