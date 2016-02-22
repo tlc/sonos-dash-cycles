@@ -15,7 +15,7 @@ a series of preconfigured actions -- favorites, volume levels, etc.
 It can be configured for multiple Dash buttons acting on 1 or more Sonos.
 
 ## Note
-*Amazon Dash buttons are not fast.*  It takes about 11 seconds to detect the button press and about another 50 until another press will be accepted.  Still, it's better than getting your phone out sometimes.
+*Amazon Dash buttons are not fast.*  It takes about 11 seconds to detect the button press and about another 50 until another press will be accepted *by the button*.  Still, it's better than getting your phone out sometimes.
 
 ## Requirements
 Install and configure [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api) server.  Test it with your browser.
