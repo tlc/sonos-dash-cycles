@@ -13,10 +13,16 @@ def handle_click(button):
     index = button.get('index', -1) + 1
     index = index % len(cycle)
     button['index'] = index
+    base  = button.get('zone_url', '')
 
     for url in cycle[index]:
-        # node-sonos-http-api doesn't like extra /
-        url = button.get('zone_url').rstrip('/') + '/' + url.lstrip('/')
+        if base and url:
+            url = base.rstrip('/') + '/' + url.lstrip('/')   # no extra /
+        elif not url:
+            url = base
+        if not url:
+            continue
+
         try:
             log.debug('sending %s', url)
             r = requests.get(url)

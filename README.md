@@ -14,7 +14,8 @@ Since the Dash button is a single action button, Cycles will cycle through
 a series of preconfigured actions -- favorites, volume levels, etc.
 It can be configured for multiple Dash buttons acting on 1 or more Sonos.
 
-*Note that Dash buttons take several seconds to wake up and do their thing.*
+## Note
+*Amazon Dash buttons are not fast.*  It takes about 11 seconds to detect the button press and about another 50 until another press will be accepted.  Still, it's better than getting your phone out sometimes.
 
 ## Requirements
 Install and configure [node-sonos-http-api](https://github.com/jishi/node-sonos-http-api) server.  Test it with your browser.
@@ -66,7 +67,6 @@ in my example.
 You could configure it to HTTP GET URLs for anything.**
 
 ## Execution
-
 Cycles expects a local config.json file.  If it's not there, or doesn't parse well, Cycles will still do MAC discovery.  
 Because Cycles sniffs network arp packets, it requires root permissions to run.
 
