@@ -25,6 +25,10 @@ Install and configure [node-sonos-http-api](https://github.com/jishi/node-sonos-
 every time you change the music.  That page also gives a nice description
 of what the Dash button is doing.  Cycles can do Step 2 for you.
 
+Add the packages needed by Cycles.
+
+    pip install -r requirements.txt
+    
 ## Configuration
 The configuration file associates MAC addresses (the colon separated number
 below) with a *"name"* for logging, a base *"zone_url"* and a *"cycle"* of actions.
