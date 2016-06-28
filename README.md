@@ -25,10 +25,6 @@ Install and configure [node-sonos-http-api](https://github.com/jishi/node-sonos-
 every time you change the music.  That page also gives a nice description
 of what the Dash button is doing.  Cycles can do Step 2 for you.
 
-Add the packages needed by Cycles.
-
-    pip install -r requirements.txt
-    
 ## Configuration
 The configuration file associates MAC addresses (the colon separated number
 below) with a *"name"* for logging, a base *"zone_url"* and a *"cycle"* of actions.
@@ -70,13 +66,17 @@ in my example.
 **By the way, cycles doesn't actually contain any Sonos specific behavior.
 You could configure it to HTTP GET URLs for anything.**
 
-## Execution
+## Use
+First, add the packages needed by Cycles.
+
+    pip install -r requirements.txt
+    
 Cycles expects a local config.json file.  If it's not there, or doesn't parse well, Cycles will still do MAC discovery.  
 Because Cycles sniffs network arp packets, it requires root permissions to run.
 
     sudo python cycles.py
 
-If you prefer you can run the docker version.  The packet sniffing requires
+If you prefer, you can run the docker version.  The packet sniffing requires
 `--net=host`
 
     docker run -d --restart=always --name=cycles --net=host -v $PWD/myconfig.json:/cycles/config.json troyc/sonos-dash-cycles
